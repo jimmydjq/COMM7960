@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DONG Jiaqi | Academic Portfolio</title>
+    
+    <style>
+        /* =========================================
+           1. CORE STYLES (Based on Apple Design)
+           ========================================= */
+        :root {
+            --bg-color: #fbfbfd;       /* Apple-like off-white background */
+            --text-main: #1d1d1f;      /* Almost black for text */
+            --text-light: #86868b;     /* Grey for secondary text */
+            --accent-blue: #0066cc;    /* Apple link blue */
+            --card-bg: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.05); /* Soft shadow */
+            --nav-blur: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Smooth Scrolling for navigation jumps */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            /* Using System Fonts similar to Apple's San Francisco */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           2. NAVIGATION (Sticky & Blur Effect)
+           ========================================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--nav-blur);
+            backdrop-filter: blur(20px); /* CSS Filter effect */
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 48px;
+        }
+
+        .nav-logo {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* =========================================
+           3. HERO SECTION (Header)
+           ========================================= */
+        header {
+            text-align: center;
+            padding: 120px 20px 60px; /* Space for fixed nav */
+            max-width: 800px;
+            margin: 0 auto;
+            /* Animation on load */
+            animation: fadeIn 1.5s ease-out; 
+        }
+
+        /* Profile Image Styling - Rounded & Shadow */
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%; /* Make it circular (Lecture Slide 58) */
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease; /* For hover effect */
+        }
+
+        /* Lecture Slide 63-66: Transformation & Hover */
+        .profile-pic:hover {
+            transform: scale(1.05); 
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            font-size: 0.95rem;
+            color: var(--accent-blue);
+        }
+
+        .contact-info a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        /* =========================================
+           4. CONTENT SECTIONS
+           ========================================= */
+        section {
+            padding: 60px 20px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        /* Alternating background for sections to create depth */
+        .section-alt {
+            background-color: #ffffff;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        /* Research Interest Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: #e8e8ed;
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 20px; /* Capsule shape */
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Card Style for Education & Papers */
+        .item-card {
+            background: var(--card-bg);
+            border-radius: 18px; /* Apple style rounded corners */
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .item-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .item-meta {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .item-desc {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        /* Publication Specific Styles */
+        .publication-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pub-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .pub-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .pub-status {
+            font-size: 0.85rem;
+            color: #d1d1d6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            background-color: #f5f5f7;
+        }
+
+        /* Keyframes for Animation (Lecture Slide 70) */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design (Mobile) */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 0.75rem; }
+            section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Jiaqi DONG</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#research">Research</a>
+                <a href="#awards">Awards</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="about">
+        <img src="photo.jpg" alt="DONG Jiaqi" class="profile-pic">
+        
+        <h1>Jimmy DONG, Jiaqi 董嘉騏</h1>
+        <div class="subtitle">Dual Master’s Candidate in Media & Communication</div>
+        
+        <div class="contact-info">
+            <p>📧 jimmydjq@life.hkbu.edu.hk | 📍 Hong Kong & Shanghai</p>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <div class="tags" style="justify-content: center;">
+                <span class="tag">Urban Communication</span>
+                <span class="tag">Digital Health</span>
+                <span class="tag">Interactive Media Design</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="education" class="section-alt">
+        <h2>Education</h2>
+        
+        <div class="item-card">
+            <div class="item-title">MA in International Journalism, SISU</div>
+            <div class="item-meta">School of Journalism and Communication | Exp. 2027</div>
+            <div class="item-desc">Shanghai International Studies University</div>
+        </div>
+
+        <div class="item-card">
+            <div class="item-title">MSocSc in Media Management, HKBU</div>
+            <div class="item-meta">School of Communication / School of Business | Exp. 2026</div>
+            <div class="item-desc">Hong Kong Baptist University</div>
+        </div>
+
+        <div class="item-card">
+            <div class="item-title">BA in Broadcasting (English), SISU</div>
+            <div class="item-meta">School of Journalism and Communication | 2024</div>
+            <div class="item-desc">Shanghai International Studies University</div>
+        </div>
+    </section>
+
+    <section id="research">
+        <h2>Selected Publications & Presentations</h2>
+        
+        <div class="publication-list">
+            <div class="pub-item">
+                <div class="pub-status">Under Review by a TSSCI Journal(2025)</div>
+                <div class="pub-title">Do You Trust “Doctor-like” AI? A Study on Perceived Anthropomorphism and Human-AI Trust.</div>
+                <div class="item-desc">Dong, J. & Hou, W. | Presented at <em>the International Symposium on Advancing Responsible AI Communication Scholarship</em>, Hong Kong.</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-status">Award-Winning Paper (2025)</div>
+                <div class="pub-title">How Are Sonic Boundaries Shaped in Transit? A Study on Spatial Experiences in Shanghai Metro.</div>
+                <div class="item-desc">Dong, J. | Presented at <em>the 2nd “Weixin” Forum, Tongji University</em>, Shanghai.</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-status">Conference Paper (2024)</div>
+                <div class="pub-title">AI-Generated Beauty, Self-Identity and Social Adaptability: A Study on Generation Z.</div>
+                <div class="item-desc">Dong, J. & Hou, W. | Presented at <em>the International Symposium on Embracing Digital Futures</em>, Hong Kong.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards" class="section-alt">
+        <h2>Honors & Awards</h2>
+        
+        <div class="item-card">
+            <ul style="padding-left: 20px;">
+                <li><strong>Master’s National Scholarship</strong>, Ministry of Education of the P.R.C. (2025)</li>
+                <li><strong>Yangtze River Delta Star of Research Postgraduate</strong> (2025)</li>
+                <li><strong>Distinction Graduate Award</strong>, Shanghai Municipal Education Commission (2024)</li>
+                <li><strong>Undergraduate’s National Scholarship</strong>, Ministry of Education of the P.R.C. (2022)</li>
+                <li><strong>2nd Place Award</strong>, Summer Scholar at The University of Hong Kong (2024)</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DONG Jiaqi. All Rights Reserved. Course Project for COMM7960, HKBU. Refined and aesthetically unified via Gemini 3 Pro.</p>
+        <p>The author assumes full responsibility for the content creation, overall layout design, and academic integrity of this project.</p>
+    </footer>
+
+</body>
+</html>
