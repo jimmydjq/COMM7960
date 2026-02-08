@@ -382,6 +382,52 @@
             .lang-switch { margin-left: 5px; padding-left: 10px; }
         }
 
+        /* Responsive Video Container */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 18px; /* Match Apple card radius */
+            box-shadow: var(--shadow);
+            background-color: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 0.75rem; }
+            section { padding: 40px 20px; }
+            
+            header {
+                flex-direction: column; 
+                text-align: center;
+                gap: 30px;
+            }
+            .header-right {
+                text-align: left;
+            }
+            .item-card {
+                flex-direction: column-reverse; 
+                align-items: flex-start;
+            }
+            .edu-logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-container { padding: 0 10px; }
+            .nav-right-group { gap: 10px; }
+            .lang-switch { margin-left: 5px; padding-left: 10px; }
+        }
+        
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
@@ -652,6 +698,16 @@
         </div>
     </section>
 
+    <section id="video">
+        <h2 data-lang="en">Featured Video</h2>
+        <h2 data-lang="tc">精選影片</h2>
+        <h2 data-lang="sc">精选视频</h2>
+
+        <div class="video-wrapper">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=784777652&bvid=BV1614y1S756&cid=1165271102&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </section>
+    
     <footer>
         <p>&copy; 2026 DONG Jiaqi. All Rights Reserved.<br>Course Project for COMM7960, HKBU.<br>Refined and aesthetically unified via Gemini 3 Pro.</p>
         <p>The author assumes full responsibility for the content creation,<br>overall layout design, and academic integrity of this project.</p>
